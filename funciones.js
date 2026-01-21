@@ -1,3 +1,5 @@
+module.exports = { cargarCartas, mezclarMazo, cargarPozo, repartirCartas, colocarCarta, guardarCarta};
+
 function cargarCartas(cartas, config) {
 
     let cartasTotales = [];
@@ -88,6 +90,8 @@ function colocarCarta(mesa, carta) {
     return false;
 }
 
+function guardarCarta(mesaJugador, carta, posicion) {
+    mesaJugador[posicion].push(carta);
+    return;
+}
 
-
-module.exports = { cargarCartas, mezclarMazo, cargarPozo, repartirCartas, colocarCarta };
