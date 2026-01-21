@@ -44,11 +44,9 @@ function repartirCartas(manoJugador, mazo, config) {
 
 }
 
-function colocarCarta(mesa, manoJugador, numeroCarta) {
+function colocarCarta(mesa, carta) {
 
-    let carta = manoJugador.splice(numeroCarta, 1)[0];
-
-    if (manoJugador[numeroCarta] === 1) {
+    if (carta === 1) {
         console.log("si");
         for (let i = 0; i < mesa.length; i++) {
             if (mesa[i].length === 0) {
@@ -57,7 +55,7 @@ function colocarCarta(mesa, manoJugador, numeroCarta) {
             }
             break;
         }
-        return;
+        return true;
     }
 
     if (carta === 0) {
@@ -69,7 +67,7 @@ function colocarCarta(mesa, manoJugador, numeroCarta) {
                 if (mesa[i].length === 13) {
                     mesa[i] = []
                 }
-                return;
+                return true;
             }
         }
     }
@@ -82,13 +80,12 @@ function colocarCarta(mesa, manoJugador, numeroCarta) {
             if (mesa[i].length === 13) {
                 mesa[i] = []
             }
-            return;
+            return true;
 
         }
     }
 
-    manoJugador.push(carta);
-    return;
+    return false;
 }
 
 
