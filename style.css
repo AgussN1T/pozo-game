@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: radial-gradient(circle, #2E8B57 0%, #145A32 70%);
+    
+}
+
+header {
+    background-color: #85bef0;
+    color: white;
+    padding: 3rem 2rem;
+}
+
+header h1 {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.mesa-juego {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 10rem);
+    width: 400px;
+    margin: 0 auto;
+}
+
+.game-layout {
+    text-align: center;
+    color: white;
+}
+
+.mano {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.carta {
+    width: 90px;
+    height: 130px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #333;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.carta:hover {
+    transform: translateY(-10px);
+    border: 2px solid #2fdf3d;
+}
