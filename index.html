@@ -12,44 +12,48 @@
     <header>
         <h1>Juego del Pozo</h1>
     </header>
+    <main>
 
-    <section>
-        <h2 id="estado-juego">Estado</h2>
-        <p id="contador">carta jugada</p>
-        <p id="contador-mazo">cartas en el mazo</p>
-        <p id="contadorPozo">pozo jugado</p>
-        <p id="contadorPozoRestantes">Cartas restantes 10</p>
-        <div>
-            <button id="btn-repartir">Repartir Cartas</button>
-        </div>
-    </section>
+        <section class="zona-info">
+            <h2 id="estado-juego">Estado</h2>
+            <p id="contador">carta jugada</p>
+            <p id="contador-mazo">cartas en el mazo</p>
+            <p id="contadorPozo">pozo jugado</p>
+            <p id="contadorPozoRestantes">Cartas restantes 10</p>
 
-    <section> 
-        
-    </section>
+        </section>
 
-    <section> 
-
-    </section>
-    
-    <section class="zona-juego">
-        <div class="mano-layout">
-            <h2>Tu Mano</h2>
-            <div id="contenedor-cartas" class="mano">
+        <section class="zona-juego">
+            <div>
+                <h2>Mazo</h2>
+                <button id="btn-repartir" class="carta mazo"><strong>Draw</button>
             </div>
-        </div>
-
-        <div class="pozo-layout">
-            <h2>Pozo</h2>
-            <div id="contenedor-pozo" class="pozo">
+            <div>
+                
             </div>
-        </div>
-    </section>
+            
+        </section>
 
-    <!-- 
+        <section class="zona-juego">
+            <div class="mano-layout">
+                <h2>Tu Mano</h2>
+                <div id="contenedor-cartas" class="mano">
+                </div>
+            </div>
+            <div class="pozo-layout">
+                <h2>Pozo</h2>
+                <div id="contenedor-pozo" class="pozo">
+                </div>
+            </div>
+        </section>
+    </main>
     <footer>
-        <p>&copy; 2026 Pozo Game</p>
-    </footer> -->
+        <section>
+            <!-- <a href="#titulo">Ir al titulo</a> -->
+            <a href="https://github.com/AgussN1T" target="_blank">contactame aqui</a>
+            <p>AgussN1T</p>
+        </section>
+    </footer>
 </body>
 <script type="module" src="script.js"></script>
 

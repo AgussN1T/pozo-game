@@ -19,10 +19,7 @@ const mazo = mezclarMazo(cartasTotales);
 
 const pozoJugador = cargarPozo(mazo, config);
 
-// console.log(mazo);
-// console.log(pozoJugador);
 repartirCartas(manoJugador, mazo, config);
-// console.log(manoJugador);
 
 const contenedor = document.getElementById('contenedor-cartas');
 const btnRepartir = document.getElementById('btn-repartir');
@@ -52,7 +49,7 @@ function mostrarPozo() {
     // divCarta.innerHTML = `
     //     <strong>${carta.valor}</strong>
     //     <span>${carta.palo}</span>
-    // `;
+    // `; 
 
     divCarta.innerHTML = `
     <div class="valor arriba">${carta.valor}</div>
