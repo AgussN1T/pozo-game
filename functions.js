@@ -4,7 +4,7 @@ export function generarCartas(config) {
     let valores = config.valores;
     let palos = config.palos;
 
-    for (let i = 0; i < valores.length; i++) {
+    for (let i = 1; i < valores.length; i++) {
         for (let j = 0; j < palos.length; j++) {
             if (i === 0) {
                 cartasTotales.push({ valor: valores[i], palo: "🃏" });
@@ -14,6 +14,7 @@ export function generarCartas(config) {
             }
         }
     }
+    
     return cartasTotales;
 }
 
@@ -55,8 +56,10 @@ export function eliminarCartaMano(manoJugador, index) {
     document.getElementById('contador').textContent = `Carta utilizada: ${cartaUsada.valor} de ${cartaUsada.palo}`;
 }
 
-export function eliminarCartaPozo(pozoJugador) {
+export function eliminarCartaPozo(pozoJugador, slots) {
     let cartaUsada = pozoJugador.splice(pozoJugador.length - 1 , 1)[0];
+    slots[0].push(cartaUsada);
+
     document.getElementById('contadorPozo').textContent = `Carta del pozo utilizada: ${cartaUsada.valor} de ${cartaUsada.palo}`;
     document.getElementById('contadorPozoRestantes').textContent = `Cartas restantes: ${pozoJugador.length}`;
 }
