@@ -32,10 +32,13 @@ header h1 {
     color: white;
     display: flex;
     align-items: center;
-    /* alinea verticalmente */
     justify-content: center;
-    /* centrado general */
 }
+
+.zona-mesa {
+    gap: 20px;
+}
+
 
 
 .mano-layout {
@@ -94,12 +97,9 @@ header h1 {
 
 
 @keyframes bounce {
-    0%,
-    100% {
-        transform: translateY(0);
+    0%,100% {transform: translateY(0);
     }
-    50% {
-        transform: translateY(-20px);
+    50% {transform: translateY(-20px);
     }
 }
 
@@ -127,19 +127,8 @@ header h1 {
     transform: rotate(180deg);
 }
 
-footer {
-    padding: 0.5rem 1rem;
-    font-size: 12px;
-    background-color: #333;
-}
 
-footer p,
-a {
-    color: white;
-}
-
-
-.mazo{
+.mazo {
     background-color: rgb(224, 22, 22);
     border-color: black;
     border-width: 2px;
@@ -152,3 +141,50 @@ a {
     animation: bounce 0.4s ease;
 }
 
+.mesa {
+    width: 90px;
+    height: 130px;
+    border: 3px dashed #aaa;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: relative;
+}
+
+.mesa:hover {
+    background-color: #e0e0e0;
+}
+
+
+footer {
+    padding: 0.5rem 1rem;
+    font-size: 12px;
+    background-color: #333;
+}
+
+footer p,
+a {
+    color: white;
+}
+
+
+
+.slot {
+    width: 90px;
+    height: 130px;
+    border: 3px dashed #aaa;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: relative;
+}
+
+.slot:hover {
+    background-color: #e0e0e0;
+}
