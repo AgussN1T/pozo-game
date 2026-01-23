@@ -8,41 +8,45 @@
 </head>
 
 <body>
-    
+
     <header>
         <h1>Juego del Pozo</h1>
     </header>
 
-    <h2 id="estado-juego">Estado</h2>
-
-
     <section>
-         <div>
-            <button id="btn-repartir">Repartir Cartas</button>
-        </div>
+        <h2 id="estado-juego">Estado</h2>
         <p id="contador">carta jugada</p>
         <p id="contador-mazo">cartas en el mazo</p>
         <p id="contadorPozo">pozo jugado</p>
-
+        <p id="contadorPozoRestantes">Cartas restantes 10</p>
+        <div>
+            <button id="btn-repartir">Repartir Cartas</button>
+        </div>
     </section>
 
-    <section>
-        <div class="game-layout">
+    <section> 
+        
+    </section>
+
+    <section> 
+
+    </section>
+    
+    <section class="zona-juego">
+        <div class="mano-layout">
+            <h2>Tu Mano</h2>
+            <div id="contenedor-cartas" class="mano">
+            </div>
+        </div>
+
+        <div class="pozo-layout">
             <h2>Pozo</h2>
             <div id="contenedor-pozo" class="pozo">
             </div>
         </div>
     </section>
 
-    <section>
-        <div class="hand-layout">
-            <h1>Tu Mano</h1>
-            <div id="contenedor-cartas" class="mano">
-            </div>
-        </div>
-    </section>
-
-<!-- 
+    <!-- 
     <footer>
         <p>&copy; 2026 Pozo Game</p>
     </footer> -->

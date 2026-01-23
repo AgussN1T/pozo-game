@@ -10,7 +10,6 @@ import {
 import config from './config.js';
 
 const manoJugador = [];
-
 const mesa = [[], [], [], []];
 const reserva = [[], [], [], []];
 
@@ -21,10 +20,9 @@ const mazo = mezclarMazo(cartasTotales);
 const pozoJugador = cargarPozo(mazo, config);
 
 // console.log(mazo);
-console.log(pozoJugador);
+// console.log(pozoJugador);
 repartirCartas(manoJugador, mazo, config);
-console.log(manoJugador);
-
+// console.log(manoJugador);
 
 const contenedor = document.getElementById('contenedor-cartas');
 const btnRepartir = document.getElementById('btn-repartir');
@@ -41,7 +39,7 @@ btnRepartir.addEventListener('click', () => {
 function mostrarPozo() {
     contenedorPozo.innerHTML = '';
 
-    if (pozoJugador.length === 0){
+    if (pozoJugador.length === 0) {
         document.getElementById('estado-juego').textContent = `Ganaste el juego!`;
         return;
     }
@@ -49,22 +47,26 @@ function mostrarPozo() {
     const carta = pozoJugador[pozoJugador.length - 1];
 
     const divCarta = document.createElement('div');
-    divCarta.classList.add('carta');
+    divCarta.classList.add('carta', 'carta-pozo');
+
+    // divCarta.innerHTML = `
+    //     <strong>${carta.valor}</strong>
+    //     <span>${carta.palo}</span>
+    // `;
 
     divCarta.innerHTML = `
-        <strong>${carta.valor}</strong>
-        <span>${carta.palo}</span>
+    <div class="valor arriba">${carta.valor}</div>
+    <div class="palo">${carta.palo}</div>
+    <div class="valor abajo">${carta.valor}</div>
     `;
 
     divCarta.addEventListener('click', () => {
-            eliminarCartaPozo(pozoJugador);
-            mostrarPozo();
-        });
+        eliminarCartaPozo(pozoJugador);
+        mostrarPozo();
+    });
 
     contenedorPozo.appendChild(divCarta);
 }
-
-
 
 function mostrarCartas() {
     contenedor.innerHTML = '';
@@ -73,9 +75,14 @@ function mostrarCartas() {
         const divCarta = document.createElement('div');
         divCarta.classList.add('carta');
 
+        // const color = (carta.palo === '♥' || carta.palo === '♦') ? 'rojo' : 'negro';
+
+        // divCarta.dataset.color = color;
+
         divCarta.innerHTML = `
-            <strong>${carta.valor}</strong>
-            <span>${carta.palo}</span>
+        <div class="valor arriba">${carta.valor}</div>
+        <div class="palo">${carta.palo}</div>
+        <div class="valor abajo">${carta.valor}</div>
         `;
 
         divCarta.addEventListener('click', () => {
@@ -89,10 +96,7 @@ function mostrarCartas() {
     });
 }
 
-
 mostrarPozo();
-
-
 mostrarCartas();
 
 

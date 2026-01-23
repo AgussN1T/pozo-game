@@ -58,4 +58,5 @@ export function eliminarCartaMano(manoJugador, index) {
 export function eliminarCartaPozo(pozoJugador) {
     let cartaUsada = pozoJugador.splice(pozoJugador.length - 1 , 1)[0];
     document.getElementById('contadorPozo').textContent = `Carta del pozo utilizada: ${cartaUsada.valor} de ${cartaUsada.palo}`;
+    document.getElementById('contadorPozoRestantes').textContent = `Cartas restantes: ${pozoJugador.length}`;
 }
