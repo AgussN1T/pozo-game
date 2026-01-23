@@ -6,10 +6,12 @@ export function generarCartas(config) {
 
     for (let i = 0; i < valores.length; i++) {
         for (let j = 0; j < palos.length; j++) {
-            if(i===0){
+            if (i === 0) {
                 cartasTotales.push({ valor: valores[i], palo: "🃏" });
             }
-            cartasTotales.push({ valor: valores[i], palo: palos[j] });
+            else {
+                cartasTotales.push({ valor: valores[i], palo: palos[j] });
+            }
         }
     }
     return cartasTotales;
@@ -43,6 +45,17 @@ export function repartirCartas(manoJugador, mazo, config) {
     while (manoJugador.length < config.maximoMano) {
         let carta = mazo.splice(0, 1)[0];
         manoJugador.push(carta);
+        document.getElementById('contador-mazo').textContent = `Cartas en mazo: ${mazo.length}`;
     }
 
+}
+
+export function eliminarCartaMano(manoJugador, index) {
+    let cartaUsada = manoJugador.splice(index, 1)[0];
+    document.getElementById('contador').textContent = `Carta utilizada: ${cartaUsada.valor} de ${cartaUsada.palo}`;
+}
+
+export function eliminarCartaPozo(pozoJugador) {
+    let cartaUsada = pozoJugador.splice(pozoJugador.length - 1 , 1)[0];
+    document.getElementById('contadorPozo').textContent = `Carta del pozo utilizada: ${cartaUsada.valor} de ${cartaUsada.palo}`;
 }

@@ -1,13 +1,10 @@
-// const { generarCartas } = require('./functions.js')
-// const { mezclarMazo } = require('./functions.js')
-// const { cargarPozo } = require('./functions.js')
-// const { repartirCartas } = require('./functions.js')
-
 import {
     generarCartas,
     mezclarMazo,
     cargarPozo,
-    repartirCartas
+    repartirCartas,
+    eliminarCartaMano,
+    eliminarCartaPozo
 } from './functions.js';
 
 import config from './config.js';
@@ -15,7 +12,7 @@ import config from './config.js';
 const manoJugador = [];
 
 const mesa = [[], [], [], []];
-const slotsJugador = [[], [], [], []];
+const reserva = [[], [], [], []];
 
 let cartasTotales = generarCartas(config);
 
@@ -30,21 +27,71 @@ console.log(manoJugador);
 
 
 const contenedor = document.getElementById('contenedor-cartas');
+const btnRepartir = document.getElementById('btn-repartir');
+
+const contenedorPozo = document.getElementById('contenedor-pozo');
+
+
+btnRepartir.addEventListener('click', () => {
+    repartirCartas(manoJugador, mazo, config);
+    mostrarCartas();
+});
+
+
+function mostrarPozo() {
+    contenedorPozo.innerHTML = '';
+
+    if (pozoJugador.length === 0){
+        document.getElementById('estado-juego').textContent = `Ganaste el juego!`;
+        return;
+    }
+
+    const carta = pozoJugador[pozoJugador.length - 1];
+
+    const divCarta = document.createElement('div');
+    divCarta.classList.add('carta');
+
+    divCarta.innerHTML = `
+        <strong>${carta.valor}</strong>
+        <span>${carta.palo}</span>
+    `;
+
+    divCarta.addEventListener('click', () => {
+            eliminarCartaPozo(pozoJugador);
+            mostrarPozo();
+        });
+
+    contenedorPozo.appendChild(divCarta);
+}
+
+
 
 function mostrarCartas() {
-    manoJugador.forEach((carta) => {
+    contenedor.innerHTML = '';
+
+    manoJugador.forEach((carta, index) => {
         const divCarta = document.createElement('div');
-        
         divCarta.classList.add('carta');
-        
+
         divCarta.innerHTML = `
             <strong>${carta.valor}</strong>
             <span>${carta.palo}</span>
         `;
-        
+
+        divCarta.addEventListener('click', () => {
+            eliminarCartaMano(manoJugador, index);
+            mostrarCartas();
+        });
+
+        divCarta.dataset.index = index;
+
         contenedor.appendChild(divCarta);
     });
 }
+
+
+mostrarPozo();
+
 
 mostrarCartas();
 
