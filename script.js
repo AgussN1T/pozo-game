@@ -49,9 +49,11 @@ mesaElements.forEach((mesaElement, indexDestino) => {
         
         if(cartaSeleccionada.valor  === 13){
             mesaElement.innerHTML = '';
+            mesa[indexDestino] = [];
         }
 
-        // limpiar selección
+        console.log(mesa);
+
         cartaSeleccionada = null;
         origenSeleccionado = null;
     });
