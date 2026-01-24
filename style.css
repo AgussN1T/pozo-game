@@ -188,6 +188,13 @@ a {
     position: relative;
 }
 
+.slot .carta {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
 .slot:hover {
     background-color: #e0e0e0;
 }

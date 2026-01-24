@@ -149,32 +149,69 @@ function mostrarCartas() {
 }
 
 
+// function mostrarSlot(index) {
+//     const slotElement = slotElements[index];
+//     slotElement.innerHTML = '';
+
+//     if (slots[index].length === 0) return;
+
+//     const cartaData = slots[index][slots[index].length - 1];
+
+//     const carta = document.createElement('div');
+//     carta.classList.add('carta');
+
+//     carta.innerHTML = `
+//         <div class="valor arriba">${cartaData.valor}</div>
+//         <div class="palo">${cartaData.palo}</div>
+//         <div class="valor abajo">${cartaData.valor}</div>
+//     `;
+//     carta.addEventListener('click', (e) => {
+//         if (cartaSeleccionada) return;
+//         e.stopPropagation();
+//         cartaSeleccionada = cartaData;
+//         origenSeleccionado = { tipo: 'slot', index };
+//     });
+
+
+//     slotElement.appendChild(carta);
+// }
+
 function mostrarSlot(index) {
     const slotElement = slotElements[index];
     slotElement.innerHTML = '';
 
-    if (slots[index].length === 0) return;
+    const pila = slots[index];
+    if (pila.length === 0) return;
 
-    const cartaData = slots[index][slots[index].length - 1];
+    pila.forEach((cartaData, i) => {
+        const carta = document.createElement('div');
+        carta.classList.add('carta');
 
-    const carta = document.createElement('div');
-    carta.classList.add('carta');
+        // caída visual
+        carta.style.top = `${i * 18}px`;
 
-    carta.innerHTML = `
-        <div class="valor arriba">${cartaData.valor}</div>
-        <div class="palo">${cartaData.palo}</div>
-        <div class="valor abajo">${cartaData.valor}</div>
-    `;
-    carta.addEventListener('click', (e) => {
-        if (cartaSeleccionada) return;
-        e.stopPropagation();
-        cartaSeleccionada = cartaData;
-        origenSeleccionado = { tipo: 'slot', index };
+        carta.innerHTML = `
+            <div class="valor arriba">${cartaData.valor}</div>
+            <div class="palo">${cartaData.palo}</div>
+            <div class="valor abajo">${cartaData.valor}</div>
+        `;
+
+        // solo la de arriba es interactiva
+        if (i === pila.length - 1) {
+            carta.addEventListener('click', (e) => {
+                if (cartaSeleccionada) return;
+                e.stopPropagation();
+                cartaSeleccionada = cartaData;
+                origenSeleccionado = { tipo: 'slot', index };
+            });
+        } else {
+            carta.style.pointerEvents = 'none';
+        }
+
+        slotElement.appendChild(carta);
     });
-
-
-    slotElement.appendChild(carta);
 }
+
 
 function mostrarMesa(index) {
     const mesaElement = mesaElements[index];
@@ -196,33 +233,6 @@ function mostrarMesa(index) {
     mesaElement.appendChild(divCarta);
 }
 
-
-// function validarJugada(indexDestino) {
-
-//     if((cartaSeleccionada.valor === 1) && (mesa[indexDestino].length) === 0){
-//         return true;
-//     }
-
-//     let ultimaJugada = mesa[indexDestino][mesa[indexDestino].length - 1];
-
-//     if (ultimaJugada.valor + 1 === cartaSeleccionada.valor) {
-//         return true;
-//     }
-
-//     if(ultimaJugada.valor === 0){
-//         if((mesa[indexDestino][mesa[indexDestino].length - 2]) + 2 === cartaSeleccionada.valor){
-//             return true;
-//         }
-//     }
-//     if(cartaSeleccionada.valor === 0){
-//         if(!(mesa[indexDestino].some(carta => carta.valor === 0))){
-//             return true;
-//         }
-//     }
-
-//     return false;
-
-// }
 
 function validarJugada(indexDestino) {
 
