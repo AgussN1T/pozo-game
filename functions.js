@@ -20,7 +20,7 @@ export function generarCartas(config) {
         }
     }
 
-    for (let i = 0; i < config.max - comodines; i++) {
+    for (let i = 0; i < config.maxComodines; i++) {
         cartasTotales.push({ valor: valores[i], palo: "🃏" });
 
     }
