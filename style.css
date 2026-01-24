@@ -264,6 +264,10 @@ body.fondo-mesa {
         );
 }
 
+body.fondo-casino {
+    background: radial-gradient(circle, #2E8B57 0%, #145A32 70%); 
+}
+
 /* Madera */
 body.fondo-madera {
     background:
