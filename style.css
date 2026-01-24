@@ -3,7 +3,7 @@ body {
     height: 100%;
     margin: 0;
     font-family: sans-serif;
-    background: radial-gradient(circle, #2E8B57 0%, #145A32 70%);
+    /* background: radial-gradient(circle, #2E8B57 0%, #145A32 70%); */
 
 }
 
@@ -23,9 +23,59 @@ header {
 }
 
 header h1 {
+    margin: 0px 0px;
     font-size: 1rem;
     text-align: center;
 }
+
+.hud {
+    width: 220px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.35);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-right: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 9px;
+}
+
+.hud h2 {
+    margin: 0;
+    font-size: 18px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 10px;
+}
+
+.hud-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 12px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.hud-item .label {
+    opacity: 0.8;
+}
+
+.hud-fondo {
+    flex-direction: column;
+    gap: 6px;
+}
+
+.hud-fondo select {
+    padding: 6px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background: #222;
+    color: white;
+    cursor: pointer;
+}
+
 
 .zona-juego {
     color: white;
@@ -109,7 +159,7 @@ header h1 {
 
 .carta:hover {
     transform: translateY(-10px);
-    border: 2px solid #ebd61e;
+    border: 2px solid #41fa12;
     animation: bounce 0.4s ease;
 }
 
@@ -141,7 +191,7 @@ header h1 {
 
 .mazo:hover {
     transform: translateY(-10px);
-    border: 2px solid #1e22eb;
+    border: 2px solid #0fff07;
     animation: bounce 0.4s ease;
 }
 
@@ -200,6 +250,46 @@ a {
 }
 
 
+
+
+body.fondo-mesa {
+    background:
+        radial-gradient(circle at center, rgba(0,0,0,0.15), rgba(0,0,0,0.6)),
+        repeating-linear-gradient(
+            45deg,
+            #1f6b45,
+            #1f6b45 10px,
+            #206f48 10px,
+            #206f48 20px
+        );
+}
+
+/* Madera */
+body.fondo-madera {
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #7b4a2e,
+            #7b4a2e 40px,
+            #6a3f27 40px,
+            #6a3f27 80px
+        );
+}
+
+/* Argentina */
+body.fondo-arg {
+    background: linear-gradient(
+        to bottom,
+        #75c9f1 0%,
+        #ffffff 50%,
+        #75c9f1 100%
+    );
+}
+
+/* Oscuro */
+body.fondo-oscuro {
+    background: radial-gradient(circle, #222, #000);
+}
 
 
 /* 

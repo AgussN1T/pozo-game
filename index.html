@@ -14,13 +14,35 @@
     </header>
     <main>
 
-        <section class="zona-info">
-            <h2 id="estado-juego">Estado</h2>
-            <p id="contador">carta jugada</p>
-            <p id="contador-mazo">cartas en el mazo</p>
-            <p id="contadorPozoRestantes">Pozo restante: 10</p>
+        <aside class="hud">
+            <h2>Estado del juego</h2>
 
-        </section>
+            <div class="hud-item">
+                <span class="label">Última carta</span>
+                <span id="contador-cartaJugada">—</span>
+            </div>
+
+            <div class="hud-item">
+                <span class="label">Cartas en el mazo</span>
+                <span id="contador-mazo">0</span>
+            </div>
+
+            <div class="hud-item">
+                <span class="label">Pozo restante</span>
+                <span id="contadorPozoRestantes">0</span>
+            </div>
+
+            <div class="hud-item hud-fondo">
+                <label for="selector-fondo">Fondo</label>
+                <select id="selector-fondo">
+                    <option value="mesa">Mesa verde</option>
+                    <option value="madera">Madera</option>
+                    <option value="arg">Argentina</option>
+                    <option value="oscuro">Oscuro</option>
+                </select>
+            </div>
+            
+        </aside>
 
         <section class="zona-juego zona-mesa">
             <div>
@@ -61,15 +83,19 @@
             <div id="slot1" class="slot">
 
             </div>
-            
+
             <div id="slot2" class="slot">
 
             </div>
-            
+
             <div id="slot3" class="slot">
             </div>
         </section>
 
+        <br>
+        <br>
+        <br>
+        <br>
         <br>
         <br>
 

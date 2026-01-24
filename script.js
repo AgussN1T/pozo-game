@@ -24,6 +24,17 @@ const contenedorPozo = document.getElementById('contenedor-pozo');
 
 const mesaElements = document.querySelectorAll('.mesa');
 
+
+
+const selectorFondo = document.getElementById('selector-fondo');
+selectorFondo.addEventListener('change', (e) => {
+    document.body.className = ''; // limpia fondos previos
+    document.body.classList.add(`fondo-${e.target.value}`);
+});
+
+
+
+
 mesaElements.forEach((mesaElement, indexDestino) => {
     mesaElement.addEventListener('click', () => {
 
@@ -60,7 +71,8 @@ mesaElements.forEach((mesaElement, indexDestino) => {
             mesa[indexDestino] = [];
         }
 
-        console.log(mesa);
+        document.getElementById('contador-cartaJugada').textContent = `Ultima carta jugada: ${cartaSeleccionada.valor} ${cartaSeleccionada.palo}`;
+        // console.log(mesa);
 
         cartaSeleccionada = null;
         origenSeleccionado = null;
@@ -273,7 +285,7 @@ function validarJugada(indexDestino) {
 
 
 
-
+document.body.classList.add('fondo-mesa');
 
 mostrarPozo();
 mostrarCartas();

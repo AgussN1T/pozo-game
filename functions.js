@@ -46,7 +46,7 @@ export function repartirCartas(manoJugador, mazo, config) {
     while (manoJugador.length < config.maximoMano) {
         let carta = mazo.splice(0, 1)[0];
         manoJugador.push(carta);
-        document.getElementById('contador-mazo').textContent = `Cartas en mazo: ${mazo.length}`;
+        document.getElementById('contador-mazo').textContent = `${mazo.length}`;
     }
 
 }
