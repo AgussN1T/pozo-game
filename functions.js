@@ -4,17 +4,27 @@ export function generarCartas(config) {
     let valores = config.valores;
     let palos = config.palos;
 
-    for (let i = 0; i < valores.length; i++) {
-        for (let j = 0; j < palos.length; j++) {
-            if (i === 0) {
-                cartasTotales.push({ valor: valores[i], palo: "🃏" });
-            }
-            else {
-                cartasTotales.push({ valor: valores[i], palo: palos[j] });
-            }
+    /* for(let i = 0 ; i< valores.duplicados; i++){
+        for (let j = 1; j < valores.length; j++) {
+
+        for (let k = 0; k < palos.length; k++) {
+            cartasTotales.push({ valor: valores[j], palo: palos[k] });
         }
     }
-    
+    } */
+
+    for (let i = 1; i < valores.length; i++) {
+
+        for (let j = 0; j < palos.length; j++) {
+            cartasTotales.push({ valor: valores[i], palo: palos[j] });
+        }
+    }
+
+    for (let i = 0; i < config.max - comodines; i++) {
+        cartasTotales.push({ valor: valores[i], palo: "🃏" });
+
+    }
+
     return cartasTotales;
 }
 

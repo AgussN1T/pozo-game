@@ -295,39 +295,3 @@ body.fondo-oscuro {
     background: radial-gradient(circle, #222, #000);
 }
 
-
-/* 
-body {
-    font-family: 'Segoe UI', sans-serif;
-    color: #2b2b2b;
-
-    
-    background:
-        repeating-linear-gradient(
-            90deg,
-            #7b4a2e,
-            #7b4a2e 40px,
-            #6a3f27 40px,
-            #6a3f27 80px
-        );
-}
-
-.header {
-    background: linear-gradient(
-        to bottom,
-        #75c9f1 0%,
-        #ffffff 50%,
-        #75c9f1 100%
-    );
-    text-align: center;
-    padding: 2rem 1rem;
-}
-
-.header h1 {
-    font-size: 3rem;
-}
-
-.header p {
-    font-size: 1.2rem;
-} 
-*/
