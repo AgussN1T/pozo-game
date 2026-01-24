@@ -161,33 +161,6 @@ function mostrarCartas() {
 }
 
 
-// function mostrarSlot(index) {
-//     const slotElement = slotElements[index];
-//     slotElement.innerHTML = '';
-
-//     if (slots[index].length === 0) return;
-
-//     const cartaData = slots[index][slots[index].length - 1];
-
-//     const carta = document.createElement('div');
-//     carta.classList.add('carta');
-
-//     carta.innerHTML = `
-//         <div class="valor arriba">${cartaData.valor}</div>
-//         <div class="palo">${cartaData.palo}</div>
-//         <div class="valor abajo">${cartaData.valor}</div>
-//     `;
-//     carta.addEventListener('click', (e) => {
-//         if (cartaSeleccionada) return;
-//         e.stopPropagation();
-//         cartaSeleccionada = cartaData;
-//         origenSeleccionado = { tipo: 'slot', index };
-//     });
-
-
-//     slotElement.appendChild(carta);
-// }
-
 function mostrarSlot(index) {
     const slotElement = slotElements[index];
     slotElement.innerHTML = '';
