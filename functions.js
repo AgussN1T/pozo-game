@@ -4,7 +4,7 @@ export function generarCartas(config) {
     let valores = config.valores;
     let palos = config.palos;
 
-    for (let i = 1; i < valores.length; i++) {
+    for (let i = 0; i < valores.length; i++) {
         for (let j = 0; j < palos.length; j++) {
             if (i === 0) {
                 cartasTotales.push({ valor: valores[i], palo: "🃏" });
