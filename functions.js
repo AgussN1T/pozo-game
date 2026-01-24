@@ -51,15 +51,15 @@ export function repartirCartas(manoJugador, mazo, config) {
 
 }
 
-export function eliminarCartaMano(manoJugador, index) {
-    let cartaUsada = manoJugador.splice(index, 1)[0];
-    document.getElementById('contador').textContent = `Carta utilizada: ${cartaUsada.valor} de ${cartaUsada.palo}`;
-}
+// export function eliminarCartaMano(manoJugador, index) {
+//     let cartaUsada = manoJugador.splice(index, 1)[0];
+//     document.getElementById('contador').textContent = `Carta utilizada: ${cartaUsada.valor} de ${cartaUsada.palo}`;
+// }
 
-export function eliminarCartaPozo(pozoJugador, slots) {
-    let cartaUsada = pozoJugador.splice(pozoJugador.length - 1 , 1)[0];
-    slots[0].push(cartaUsada);
+// export function eliminarCartaPozo(pozoJugador, slots) {
+//     let cartaUsada = pozoJugador.splice(pozoJugador.length - 1 , 1)[0];
+//     slots[0].push(cartaUsada);
 
-    document.getElementById('contadorPozo').textContent = `Carta del pozo utilizada: ${cartaUsada.valor} de ${cartaUsada.palo}`;
-    document.getElementById('contadorPozoRestantes').textContent = `Cartas restantes: ${pozoJugador.length}`;
-}
+//     document.getElementById('contadorPozo').textContent = `Carta del pozo utilizada: ${cartaUsada.valor} de ${cartaUsada.palo}`;
+//     document.getElementById('contadorPozoRestantes').textContent = `Cartas restantes: ${pozoJugador.length}`;
+// }
