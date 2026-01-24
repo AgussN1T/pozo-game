@@ -3,6 +3,7 @@ import {
     mezclarMazo,
     cargarPozo,
     repartirCartas,
+    validarJugada
 } from './functions.js';
 
 import config from './config.js';
@@ -34,13 +35,12 @@ selectorFondo.addEventListener('change', (e) => {
 
 
 
-
 mesaElements.forEach((mesaElement, indexDestino) => {
     mesaElement.addEventListener('click', () => {
 
         if (!cartaSeleccionada) return;
 
-        if(!validarJugada(indexDestino)) {
+        if(!validarJugada(indexDestino,cartaSeleccionada,mesa)) {
             cartaSeleccionada = null;
             origenSeleccionado = null;
             return;
@@ -66,7 +66,7 @@ mesaElements.forEach((mesaElement, indexDestino) => {
         mesa[indexDestino].push(cartaSeleccionada);
         mostrarMesa(indexDestino);
 
-        if (cartaSeleccionada.valor === 13) {
+        if (mesa[indexDestino].length === 13) {
             mesaElement.innerHTML = '';
             mesa[indexDestino] = [];
         }
@@ -113,6 +113,7 @@ function mostrarPozo() {
 
     if (pozoJugador.length === 0) {
         document.getElementById('estado-juego').textContent = `Ganaste el juego!`;
+        mostrarVictoria();
         return;
     }
 
@@ -219,41 +220,28 @@ function mostrarMesa(index) {
 }
 
 
-function validarJugada(indexDestino) {
 
-    const pila = mesa[indexDestino];
 
-    if (cartaSeleccionada.valor === 1 && pila.length === 0) {
-        return true;
-    }
+const modalVictoria = document.getElementById('modal-victoria-fondo');
+// const btnReiniciar = document.getElementById('btn-reiniciar');
+const btnSalir = document.getElementById('btn-salir');
 
-    if (pila.length === 0) {
-        return false;
-    }
-
-    const ultimaJugada = pila[pila.length - 1];
-
-    if (ultimaJugada.valor !== 0 && ultimaJugada.valor + 1 === cartaSeleccionada.valor) {
-        return true;
-    }
-
-    if (ultimaJugada.valor === 0 && pila.length >= 2) {
-        const anterior = pila[pila.length - 2];
-
-        if (anterior.valor + 2 === cartaSeleccionada.valor) {
-            return true;
-        }
-    }
-
-    if (cartaSeleccionada.valor === 0) {
-        const hayComodin = pila.some(carta => carta.valor === 0);
-        if (!hayComodin) {
-            return true;
-        }
-    }
-
-    return false;
+function mostrarVictoria() {
+    modalVictoria.classList.remove('oculto');
 }
+
+function ocultarVictoria() {
+    modalVictoria.classList.add('oculto');
+}
+
+// btnReiniciar.addEventListener('click', () => {
+//     ocultarVictoria();
+//     iniciarJuego(); // tu función existente
+// });
+
+btnSalir.addEventListener('click', () => {
+    location.reload();
+});
 
 
 
