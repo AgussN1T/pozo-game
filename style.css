@@ -20,7 +20,7 @@ body {
 main {
     flex: 1;
     display: flex;
-    align-items: center;      /* centra vertical real */
+    align-items: center;     
     justify-content: center;
     gap: 40px;
     /* min-height: 100vh; */
@@ -81,8 +81,8 @@ header {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    border-right: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 9px;
+    border-right: 2px solid rgba(255, 255, 255, 0);
+    border-radius: 14px;
     align-self: center;
 }
 
@@ -309,15 +309,45 @@ a {
     color: white;
 } */
 
+
+/* footer {
+
+    flex-shrink: 0;
+
+    padding: 20px 0; 
+
+    text-align: center;
+
+    font-size: 0.75rem;
+
+    color: #cfcfcf;
+
+    opacity: 0.8;
+
+    background: rgba(0, 0, 0, 0.2);
+
+    margin-top: 80px;
+
+
+} */
+
+
 footer {
-    flex-shrink: 0; /* Evita que el footer se aplaste */
-    padding: 20px 0; /* Un poco más de aire */
+    flex-shrink: 0;
+    padding: 18px 20px; /* Recuperamos tu padding de tarjeta */
     text-align: center;
     font-size: 0.75rem;
     color: #cfcfcf;
     opacity: 0.8;
-    background: rgba(0, 0, 0, 0.2);
-    margin-top: 80px;
+    background: rgba(0, 0, 0, 0.4); /* Un poco más oscuro para que se vea mejor */
+    
+    width: fit-content;
+    width: 80%;
+    max-width: 90%;          /* Seguridad para móviles */
+    margin: 80px auto 20px auto; 
+    
+    border-radius: 14px;     
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 footer span {
