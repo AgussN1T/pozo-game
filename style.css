@@ -12,11 +12,20 @@ body {
     flex-direction: column;
 }
 
+
+/* main {
+    flex: 1;
+} */
+
 main {
     flex: 1;
+    display: flex;
+    align-items: center;      /* centra vertical real */
+    justify-content: center;
+    gap: 40px;
 }
 
-header {
+/* header {
     background-color: #85bef0;
     color: white;
     padding: 1rem 0.5rem;
@@ -26,7 +35,42 @@ header h1 {
     margin: 0px 0px;
     font-size: 1rem;
     text-align: center;
+} */
+
+
+header {
+    display: flex;
+    justify-content: center;
+    padding: 24px 0;
 }
+
+.header-carta {
+    background: #fff;
+    width: 320px;
+    padding: 18px 20px;
+    border-radius: 14px;
+    box-shadow:
+        0 8px 18px rgba(0,0,0,.35),
+        inset 0 0 0 2px #e6e6e6;
+    text-align: center;
+    transform: rotate(-1.5deg);
+    position: relative;
+}
+
+.header-carta h1 {
+    font-size: 2rem;
+    letter-spacing: 2px;
+}
+
+.header-carta small {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.8rem;
+    color: #555;
+}
+
+
+
 
 .hud {
     width: 220px;
@@ -38,6 +82,7 @@ header h1 {
     gap: 15px;
     border-right: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 9px;
+    align-self: center;
 }
 
 .hud h2 {
@@ -77,12 +122,32 @@ header h1 {
 }
 
 
-.zona-juego {
+/* .zona-juego {
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
+} */
+
+
+.game-area {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    /* ancla visual */
+    transform: translateY(40px);
 }
+
+
+.zona-juego {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+
 
 .zona-mesa {
     gap: 20px;
@@ -220,14 +285,41 @@ header h1 {
 }
 
 
-footer {
+/* footer {
     padding: 0.5rem 1rem;
     font-size: 12px;
     background-color: #333;
 }
 
+
 footer p,
 a {
+    color: white;
+} */
+
+footer {
+    flex-shrink: 0; /* Evita que el footer se aplaste */
+    padding: 20px 0; /* Un poco más de aire */
+    text-align: center;
+    font-size: 0.75rem;
+    color: #cfcfcf;
+    opacity: 0.8;
+    background: rgba(0, 0, 0, 0.2);
+    margin-top: 80px;
+}
+
+footer span {
+    margin: 0 6px;
+}
+
+footer .frase {
+    display: block;
+    margin-top: 4px;
+    font-style: italic;
+    opacity: 0.7;
+}
+
+footer a {
     color: white;
 }
 
