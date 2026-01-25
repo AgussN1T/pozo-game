@@ -160,7 +160,14 @@ header h1 {
 .carta:hover {
     transform: translateY(-10px);
     border: 2px solid #41fa12;
+    /* animation: bounce 0.4s ease; */
+}
+
+.carta.seleccionada {
+    transform: translateY(-15px);
+    border: 2px solid #41fa12;
     animation: bounce 0.4s ease;
+    z-index: 10;
 }
 
 
@@ -294,8 +301,6 @@ body.fondo-arg {
 body.fondo-oscuro {
     background: radial-gradient(circle, #222, #000);
 }
-
-
 
 
 

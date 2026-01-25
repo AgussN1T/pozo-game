@@ -25,9 +25,11 @@ const contenedorPozo = document.getElementById('contenedor-pozo');
 
 const mesaElements = document.querySelectorAll('.mesa');
 
-
-
 const selectorFondo = document.getElementById('selector-fondo');
+
+
+
+
 selectorFondo.addEventListener('change', (e) => {
     document.body.className = ''; // limpia fondos previos
     document.body.classList.add(`fondo-${e.target.value}`);
@@ -40,7 +42,7 @@ mesaElements.forEach((mesaElement, indexDestino) => {
 
         if (!cartaSeleccionada) return;
 
-        if(!validarJugada(indexDestino,cartaSeleccionada,mesa)) {
+        if (!validarJugada(indexDestino, cartaSeleccionada, mesa)) {
             cartaSeleccionada = null;
             origenSeleccionado = null;
             return;
@@ -62,7 +64,9 @@ mesaElements.forEach((mesaElement, indexDestino) => {
             mostrarSlot(origenSeleccionado.index);
         }
 
-
+        document
+            .querySelectorAll('.carta.seleccionada')
+            .forEach(c => c.classList.remove('seleccionada'));
         mesa[indexDestino].push(cartaSeleccionada);
         mostrarMesa(indexDestino);
 
@@ -87,15 +91,20 @@ slotElements.forEach((slotElement, indexSlot) => {
         if (!cartaSeleccionada) return;
         if (origenSeleccionado?.tipo !== 'mano') return;
 
-        
+
         manoJugador.splice(origenSeleccionado.index, 1);
         slots[indexSlot].push(cartaSeleccionada);
+
+        document
+            .querySelectorAll('.carta.seleccionada')
+            .forEach(c => c.classList.remove('seleccionada'));
 
         mostrarCartas();
         mostrarSlot(indexSlot);
 
         cartaSeleccionada = null;
         origenSeleccionado = null;
+
     });
 });
 
@@ -129,8 +138,23 @@ function mostrarPozo() {
     `;
 
     divCarta.addEventListener('click', () => {
+
+        if (divCarta.classList.contains('seleccionada')) {
+                divCarta.classList.remove('seleccionada')
+                cartaSeleccionada = null;
+                origenSeleccionado = null;
+                return;
+            }
+        
+        document
+            .querySelectorAll('.carta.seleccionada')
+            .forEach(c => c.classList.remove('seleccionada'));
+
+        
         cartaSeleccionada = carta;
         origenSeleccionado = { tipo: 'pozo' };
+        divCarta.classList.add('seleccionada');
+
     });
 
     contenedorPozo.appendChild(divCarta);
@@ -151,8 +175,25 @@ function mostrarCartas() {
         `;
 
         divCarta.addEventListener('click', () => {
+
+            if (divCarta.classList.contains('seleccionada')) {
+                divCarta.classList.remove('seleccionada')
+                cartaSeleccionada = null;
+                origenSeleccionado = null;
+                return;
+            }
+
+            document
+                .querySelectorAll('.carta.seleccionada')
+                .forEach(c => c.classList.remove('seleccionada'));
+
+
             cartaSeleccionada = carta;
             origenSeleccionado = { tipo: 'mano', index };
+
+            divCarta.classList.add('seleccionada');
+
+
         });
 
         divCarta.dataset.index = index;
@@ -160,7 +201,6 @@ function mostrarCartas() {
         contenedor.appendChild(divCarta);
     });
 }
-
 
 function mostrarSlot(index) {
     const slotElement = slotElements[index];
@@ -183,14 +223,33 @@ function mostrarSlot(index) {
         `;
 
         // solo la de arriba es interactiva
-        if (i === pila.length - 1) {
-            carta.addEventListener('click', (e) => {
-                if (cartaSeleccionada) return;
-                e.stopPropagation();
-                cartaSeleccionada = cartaData;
-                origenSeleccionado = { tipo: 'slot', index };
-            });
-        } else {
+if (i === pila.length - 1) {
+    carta.addEventListener('click', (e) => {
+if (origenSeleccionado?.tipo === 'mano') {
+            return;
+        }
+
+        e.stopPropagation();
+
+        // toggle selección del slot
+        if (carta.classList.contains('seleccionada')) {
+            carta.classList.remove('seleccionada');
+            cartaSeleccionada = null;
+            origenSeleccionado = null;
+            return;
+        }
+
+        document
+            .querySelectorAll('.carta.seleccionada')
+            .forEach(c => c.classList.remove('seleccionada'));
+
+        cartaSeleccionada = cartaData;
+        origenSeleccionado = { tipo: 'slot', index };
+
+        carta.classList.add('seleccionada');
+    });
+}
+        else {
             carta.style.pointerEvents = 'none';
         }
 
