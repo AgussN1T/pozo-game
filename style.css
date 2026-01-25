@@ -23,6 +23,7 @@ main {
     align-items: center;      /* centra vertical real */
     justify-content: center;
     gap: 40px;
+    /* min-height: 100vh; */
 }
 
 /* header {
@@ -222,17 +223,28 @@ header {
     }
 }
 
-.carta:hover {
+/* .carta:hover {
     transform: translateY(-10px);
     border: 2px solid #41fa12;
-    /* animation: bounce 0.4s ease; */
+    animation: bounce 0.4s ease;
+} */
+.carta:hover {
+    transform: translateY(-10px);
+    outline: 2px solid #41fa12;
+    outline-offset: -2px;
 }
 
 .carta.seleccionada {
-    transform: translateY(-15px);
+    /* transform: translateY(-15px);
     border: 2px solid #41fa12;
     animation: bounce 0.4s ease;
+    z-index: 10; */
+    transform: translateY(-15px);
+    outline: 3px solid #41fa12; 
+    outline-offset: -3px;       
+    animation: bounce 0.4s ease;
     z-index: 10;
+
 }
 
 
