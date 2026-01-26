@@ -377,8 +377,6 @@ footer a {
 }
 
 
-
-
 body.fondo-mesa {
     background:
         radial-gradient(circle at center, rgba(0,0,0,0.15), rgba(0,0,0,0.6)),
@@ -392,7 +390,18 @@ body.fondo-mesa {
 }
 
 body.fondo-casino {
-    background: radial-gradient(circle, #2E8B57 0%, #145A32 70%); 
+    /* background: radial-gradient(circle, #2E8B57 0%, #145A32 70%);  */
+    background:
+        radial-gradient(circle at center,
+            rgba(255, 255, 255, 0.08) 0%,
+            rgba(0, 0, 0, 0.35) 60%,
+            rgba(0, 0, 0, 0.7) 100%),
+        repeating-linear-gradient(45deg,
+            rgba(255, 255, 255, 0.02) 0,
+            rgba(255, 255, 255, 0.02) 2px,
+            rgba(0, 0, 0, 0.02) 2px,
+            rgba(0, 0, 0, 0.02) 4px),
+        #0b4f2f;
 }
 
 /* Madera */
