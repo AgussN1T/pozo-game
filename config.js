@@ -4,7 +4,7 @@ const config = {
   "palos": ["♠️", "♦️", "♥️", "♣️"],
   "maxComodines": 4,
   "maximoMano": 6,
-  "maximoPozo": 1
+  "maximoPozo": 10
 };
 
 export default config;

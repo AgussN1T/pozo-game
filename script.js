@@ -308,9 +308,9 @@ function renderizarCarta(divCarta, carta) {
 
     if (carta.valor === 0) {
         divCarta.innerHTML = `
-        <div class="valor arriba">${carta.valor}</div>
+        <div class="valor arriba"></div>
         <div class="palo">${carta.palo}</div>
-        <div class="valor abajo">${carta.valor}</div>
+        <div class="valor abajo"></div>
     `;
         return;
     }
