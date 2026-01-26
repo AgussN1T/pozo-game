@@ -279,7 +279,7 @@ function mostrarMesa(index) {
 
 
 const modalVictoria = document.getElementById('modal-victoria-fondo');
-// const btnReiniciar = document.getElementById('btn-reiniciar');
+const btnReiniciar = document.getElementById('btn-reiniciar');
 const btnSalir = document.getElementById('btn-salir');
 
 function mostrarVictoria() {
@@ -289,20 +289,19 @@ function mostrarVictoria() {
     modalVictoria.classList.remove('oculto');
 }
 
-// function ocultarVictoria() {
-//     modalVictoria.classList.add('oculto');
-// }
+function ocultarVictoria() {
+    modalVictoria.classList.add('oculto');
+}
 
-// btnReiniciar.addEventListener('click', () => {
-//     ocultarVictoria();
-//     iniciarJuego(); // tu función existente
-// });
-
-btnSalir.addEventListener('click', () => {
+btnReiniciar.addEventListener('click', () => {
+    ocultarVictoria();
     location.reload();
 });
 
-
+btnSalir.addEventListener('click', () => {
+    ocultarVictoria();
+    location.reload();
+});
 
 
 function renderizarCarta(divCarta, carta) {
@@ -362,9 +361,6 @@ function renderizarCarta(divCarta, carta) {
 
 }
 
-let segundos = 0;
-let intervalo;
-
 function iniciarCronometro() {
     if (intervalo) clearInterval(intervalo);
 
@@ -381,6 +377,9 @@ function iniciarCronometro() {
         document.getElementById("cronometro").innerText = tiempoTexto;
     }, 1000);
 }
+
+let segundos = 0;
+let intervalo;
 
 
 document.body.classList.add('fondo-mesa');
