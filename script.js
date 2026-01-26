@@ -26,7 +26,7 @@ const contenedorPozo = document.getElementById('contenedor-pozo');
 const mesaElements = document.querySelectorAll('.mesa');
 
 const selectorFondo = document.getElementById('selector-fondo');
-
+document.getElementById('contador-pozoRestante').textContent = `${pozoJugador.length}`;
 
 
 
@@ -55,6 +55,7 @@ mesaElements.forEach((mesaElement, indexDestino) => {
         }
 
         if (origenSeleccionado.tipo === 'pozo') {
+            document.getElementById('contador-pozoRestante').textContent = `${pozoJugador.length}`;
             pozoJugador.pop();
             mostrarPozo();
         }
@@ -75,7 +76,7 @@ mesaElements.forEach((mesaElement, indexDestino) => {
             mesa[indexDestino] = [];
         }
 
-        document.getElementById('contador-cartaJugada').textContent = `Ultima carta jugada: ${cartaSeleccionada.valor} ${cartaSeleccionada.palo}`;
+        document.getElementById('contador-cartaJugada').textContent = `${cartaSeleccionada.valor} ${cartaSeleccionada.palo}`;
         // console.log(mesa);
 
         cartaSeleccionada = null;
@@ -131,26 +132,22 @@ function mostrarPozo() {
     const divCarta = document.createElement('div');
     divCarta.classList.add('carta', 'carta-pozo');
 
-    divCarta.innerHTML = `
-    <div class="valor arriba">${carta.valor}</div>
-    <div class="palo">${carta.palo}</div>
-    <div class="valor abajo">${carta.valor}</div>
-    `;
+    renderizarCarta(divCarta,carta);
 
     divCarta.addEventListener('click', () => {
 
         if (divCarta.classList.contains('seleccionada')) {
-                divCarta.classList.remove('seleccionada')
-                cartaSeleccionada = null;
-                origenSeleccionado = null;
-                return;
-            }
-        
+            divCarta.classList.remove('seleccionada')
+            cartaSeleccionada = null;
+            origenSeleccionado = null;
+            return;
+        }
+
         document
             .querySelectorAll('.carta.seleccionada')
             .forEach(c => c.classList.remove('seleccionada'));
 
-        
+
         cartaSeleccionada = carta;
         origenSeleccionado = { tipo: 'pozo' };
         divCarta.classList.add('seleccionada');
@@ -168,11 +165,14 @@ function mostrarCartas() {
         divCarta.classList.add('carta');
         // const color = (carta.palo === '♥' || carta.palo === '♦') ? 'rojo' : 'negro';
         // divCarta.dataset.color = color;
-        divCarta.innerHTML = `
-        <div class="valor arriba">${carta.valor}</div>
-        <div class="palo">${carta.palo}</div>
-        <div class="valor abajo">${carta.valor}</div>
-        `;
+        // divCarta.innerHTML = `
+        // <div class="valor arriba">${carta.valor}</div>
+        // <div class="palo">${carta.palo}</div>
+        // <div class="valor abajo">${carta.valor}</div>
+        // `;
+
+        renderizarCarta(divCarta,carta);
+
 
         divCarta.addEventListener('click', () => {
 
@@ -210,50 +210,51 @@ function mostrarSlot(index) {
     if (pila.length === 0) return;
 
     pila.forEach((cartaData, i) => {
-        const carta = document.createElement('div');
-        carta.classList.add('carta');
+        const divCarta = document.createElement('div');
+        divCarta.classList.add('carta');
 
         // caída visual
-        carta.style.top = `${i * 18}px`;
+        divCarta.style.top = `${i * 18}px`;
 
-        carta.innerHTML = `
-            <div class="valor arriba">${cartaData.valor}</div>
-            <div class="palo">${cartaData.palo}</div>
-            <div class="valor abajo">${cartaData.valor}</div>
-        `;
+        renderizarCarta(divCarta,cartaData);
+        // divCarta.innerHTML = `
+        //     <div class="valor arriba">${cartaData.valor}</div>
+        //     <div class="palo">${cartaData.palo}</div>
+        //     <div class="valor abajo">${cartaData.valor}</div>
+        // `;
 
         // solo la de arriba es interactiva
-if (i === pila.length - 1) {
-    carta.addEventListener('click', (e) => {
-if (origenSeleccionado?.tipo === 'mano') {
-            return;
+        if (i === pila.length - 1) {
+            divCarta.addEventListener('click', (e) => {
+                if (origenSeleccionado?.tipo === 'mano') {
+                    return;
+                }
+
+                e.stopPropagation();
+
+                // toggle selección del slot
+                if (divCarta.classList.contains('seleccionada')) {
+                    divCarta.classList.remove('seleccionada');
+                    cartaSeleccionada = null;
+                    origenSeleccionado = null;
+                    return;
+                }
+
+                document
+                    .querySelectorAll('.carta.seleccionada')
+                    .forEach(c => c.classList.remove('seleccionada'));
+
+                cartaSeleccionada = cartaData;
+                origenSeleccionado = { tipo: 'slot', index };
+
+                divCarta.classList.add('seleccionada');
+            });
         }
-
-        e.stopPropagation();
-
-        // toggle selección del slot
-        if (carta.classList.contains('seleccionada')) {
-            carta.classList.remove('seleccionada');
-            cartaSeleccionada = null;
-            origenSeleccionado = null;
-            return;
-        }
-
-        document
-            .querySelectorAll('.carta.seleccionada')
-            .forEach(c => c.classList.remove('seleccionada'));
-
-        cartaSeleccionada = cartaData;
-        origenSeleccionado = { tipo: 'slot', index };
-
-        carta.classList.add('seleccionada');
-    });
-}
         else {
-            carta.style.pointerEvents = 'none';
+            divCarta.style.pointerEvents = 'none';
         }
 
-        slotElement.appendChild(carta);
+        slotElement.appendChild(divCarta);
     });
 }
 
@@ -264,16 +265,12 @@ function mostrarMesa(index) {
 
     if (mesa[index].length === 0) return;
 
-    const cartaData = mesa[index][mesa[index].length - 1];
+    const carta = mesa[index][mesa[index].length - 1];
 
     const divCarta = document.createElement('div');
     divCarta.classList.add('carta');
 
-    divCarta.innerHTML = `
-        <div class="valor arriba">${cartaData.valor}</div>
-        <div class="palo">${cartaData.palo}</div>
-        <div class="valor abajo">${cartaData.valor}</div>
-    `;
+    renderizarCarta(divCarta, carta);
 
     mesaElement.appendChild(divCarta);
 }
@@ -304,6 +301,63 @@ btnSalir.addEventListener('click', () => {
 
 
 
+
+function renderizarCarta(divCarta, carta) {
+
+    if (carta.valor === 0) {
+        divCarta.innerHTML = `
+        <div class="valor arriba">${carta.valor}</div>
+        <div class="palo">${carta.palo}</div>
+        <div class="valor abajo">${carta.valor}</div>
+    `;
+        return;
+    }
+
+    if (carta.valor === 1) {
+        divCarta.innerHTML = `
+        <div class="valor arriba">A</div>
+        <div class="palo">${carta.palo}</div>
+        <div class="valor abajo">A</div>
+    `;
+        return;
+    }
+    
+    if(carta.valor <=10){
+        divCarta.innerHTML = `
+        <div class="valor arriba">${carta.valor}</div>
+        <div class="palo">${carta.palo}</div>
+        <div class="valor abajo">${carta.valor}</div>
+    `;
+        return;
+    }
+
+    if (carta.valor === 11) {
+        divCarta.innerHTML = `
+        <div class="valor arriba">J</div>
+        <div class="palo">${carta.palo}</div>
+        <div class="valor abajo">J</div>
+    `;
+        return;
+    }
+    if (carta.valor === 12) {
+        divCarta.innerHTML = `
+        <div class="valor arriba">Q</div>
+        <div class="palo">${carta.palo}</div>
+        <div class="valor abajo">Q</div>
+    `;
+        return;
+    }
+    if (carta.valor === 13) {
+        divCarta.innerHTML = `
+        <div class="valor arriba">K</div>
+        <div class="palo">${carta.palo}</div>
+        <div class="valor abajo">K</div>
+    `;
+        return;
+    }
+
+
+}
 
 document.body.classList.add('fondo-mesa');
 

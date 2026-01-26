@@ -4,19 +4,12 @@ export function generarCartas(config) {
     let valores = config.valores;
     let palos = config.palos;
 
-    /* for(let i = 0 ; i< valores.duplicados; i++){
-        for (let j = 1; j < valores.length; j++) {
+    for (let k = 0; k < config.duplicados; k++) {
+        for (let i = 1; i < valores.length; i++) {
 
-        for (let k = 0; k < palos.length; k++) {
-            cartasTotales.push({ valor: valores[j], palo: palos[k] });
-        }
-    }
-    } */
-
-    for (let i = 1; i < valores.length; i++) {
-
-        for (let j = 0; j < palos.length; j++) {
-            cartasTotales.push({ valor: valores[i], palo: palos[j] });
+            for (let j = 0; j < palos.length; j++) {
+                cartasTotales.push({ valor: valores[i], palo: palos[j] });
+            }
         }
     }
 
@@ -54,7 +47,7 @@ export function cargarPozo(mazo, config) {
 }
 
 export function repartirCartas(manoJugador, mazo, config) {
-    while ((manoJugador.length < config.maximoMano) && mazo.length>0) {
+    while ((manoJugador.length < config.maximoMano) && mazo.length > 0) {
         let carta = mazo.splice(0, 1)[0];
         manoJugador.push(carta);
         document.getElementById('contador-mazo').textContent = `${mazo.length}`;
@@ -93,7 +86,7 @@ export function validarJugada(indexDestino, cartaSeleccionada, mesa) {
         const hayComodin = pila.some(carta => carta.valor === 0);
         if (!hayComodin) {
             return true;
-        } else{
+        } else {
             console.log("hay comodin")
         }
     }
