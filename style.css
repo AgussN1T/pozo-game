@@ -23,7 +23,6 @@ main {
     align-items: center;     
     justify-content: center;
     gap: 40px;
-    /* min-height: 100vh; */
 }
 
 /* header {
@@ -70,12 +69,10 @@ header {
     color: #555;
 }
 
-
-
-
-.hud {
+/* .hud {
     width: 220px;
     padding: 20px;
+    backdrop-filter: blur(10px);
     background: rgba(0, 0, 0, 0.35);
     color: white;
     display: flex;
@@ -84,6 +81,26 @@ header {
     border-right: 2px solid rgba(255, 255, 255, 0);
     border-radius: 14px;
     align-self: center;
+    margin-left: 0; 
+    margin-right: 20px;
+} */
+
+.hud {
+    position: fixed;   /* Lo despega de la mesa */
+    top: 40px;        /* Distancia desde arriba (tu margin anterior) */
+    left: 20px;       /* Distancia desde el borde izquierdo */
+    
+    width: 220px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.35);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    z-index: 1000;    /* Para que las cartas no pasen por encima del panel */
 }
 
 .hud h2 {
@@ -267,7 +284,7 @@ header {
 
 
 .mazo {
-    background-color: rgb(224, 22, 22);
+    background-color: rgb(99, 19, 19);
     border-color: black;
     border-width: 2px;
     color: white;
@@ -342,9 +359,9 @@ footer {
     background: rgba(0, 0, 0, 0.4); /* Un poco más oscuro para que se vea mejor */
     
     width: fit-content;
-    width: 80%;
+    width: 70%;
     max-width: 90%;          /* Seguridad para móviles */
-    margin: 80px auto 20px auto; 
+    margin: 60px auto 20px auto; 
     
     border-radius: 14px;     
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -437,7 +454,6 @@ body.fondo-oscuro {
 }
 
 
-
 /* MODAL */
 
 .modal-fondo {
@@ -528,6 +544,13 @@ body.fondo-oscuro {
 .imagen-joker {
     width: 48px;
     height: 48px;
+    vertical-align: middle;
+    object-fit: contain;
+}
+
+.imagen-joker-mazo {
+    width: 55px;
+    height: 55px;
     vertical-align: middle;
     object-fit: contain;
 }
