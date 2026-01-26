@@ -314,57 +314,25 @@ header {
 }
 
 
-/* footer {
-    padding: 0.5rem 1rem;
-    font-size: 12px;
-    background-color: #333;
-}
-
-
-footer p,
-a {
-    color: white;
-} */
-
-
-/* footer {
-
-    flex-shrink: 0;
-
-    padding: 20px 0; 
-
-    text-align: center;
-
-    font-size: 0.75rem;
-
-    color: #cfcfcf;
-
-    opacity: 0.8;
-
-    background: rgba(0, 0, 0, 0.2);
-
-    margin-top: 80px;
-
-
-} */
-
-
 footer {
     flex-shrink: 0;
-    padding: 18px 20px; /* Recuperamos tu padding de tarjeta */
+    padding: 18px 20px; 
     text-align: center;
     font-size: 0.75rem;
     color: #cfcfcf;
     opacity: 0.8;
-    background: rgba(0, 0, 0, 0.4); /* Un poco más oscuro para que se vea mejor */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+    /* background: rgba(0, 0, 0, 0.4);  */
     
     width: fit-content;
     width: 70%;
-    max-width: 90%;          /* Seguridad para móviles */
+    max-width: 90%;         
     margin: 60px auto 20px auto; 
     
     border-radius: 14px;     
     border: 1px solid rgba(255, 255, 255, 0.1);
+
+    pointer-events: none;
 }
 
 footer span {
@@ -380,6 +348,7 @@ footer .frase {
 
 footer a {
     color: white;
+    pointer-events: auto;
 }
 
 
