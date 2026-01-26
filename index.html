@@ -22,36 +22,40 @@
         </div>
     </header>
 
-            <section class="hud">
-            <h2 id="estado-juego">Estado del juego</h2>
+    <section class="hud">
+        <h2 id="estado-juego">Estado del juego</h2>
 
-            <div class="hud-item">
-                <span class="label">Última carta</span>
-                <span id="contador-cartaJugada">—</span>
-            </div>
+        <div class="hud-item">
+            <span class="label">Última carta</span>
+            <span id="contador-cartaJugada">—</span>
+        </div>
 
-            <div class="hud-item">
-                <span class="label">Cartas en el mazo</span>
-                <span id="contador-mazo">0</span>
-            </div>
+        <div class="hud-item">
+            <span class="label">Cartas en el mazo</span>
+            <span id="contador-mazo">0</span>
+        </div>
 
-            <div class="hud-item">
-                <span class="label">Pozo restante</span>
-                <span id="contador-pozoRestante">0</span>
-            </div>
+        <div class="hud-item">
+            <span class="label">Pozo restante</span>
+            <span id="contador-pozoRestante">0</span>
+        </div>
+        <div class="hud-item">
+            <span class="label">Tiempo:</span>
+            <span id="cronometro">00:00</span>
+        </div>
 
-            <div class="hud-item hud-fondo">
-                <label for="selector-fondo">Fondo</label>
-                <select id="selector-fondo">
-                    <option value="mesa">Mesa verde</option>
-                    <option value="madera">Madera</option>
-                    <option value="arg">Argentina</option>
-                    <option value="oscuro">Oscuro</option>
-                    <option value="casino">Casino</option>
-                </select>
-            </div>
+        <div class="hud-item hud-fondo">
+            <label for="selector-fondo">Fondo</label>
+            <select id="selector-fondo">
+                <option value="mesa">Mesa verde</option>
+                <option value="madera">Madera</option>
+                <option value="arg">Argentina</option>
+                <option value="oscuro">Oscuro</option>
+                <option value="casino">Casino</option>
+            </select>
+        </div>
 
-        </section>
+    </section>
 
     <main>
 
@@ -60,6 +64,10 @@
             <div class="modal victoria">
                 <h2>🎉 ¡Ganaste la partida!</h2>
                 <p>Excelente jugada</p>
+                
+                <div class="tiempo-final">
+                    Tiempo total: <span id="tiempo-modal">00:00</span>
+                </div>
 
                 <div class="acciones-modal">
                     <button id="btn-reiniciar" class="boton">Jugar otra vez</button>
@@ -69,34 +77,35 @@
 
         </div>
 
-<div class="game-area">
+        <div class="game-area">
 
-    <section class="zona-juego zona-mesa">
-        <button id="btn-repartir" class="carta mazo"><strong><img src="assets\joker.png" alt="Joker" class="imagen-joker-mazo"></strong></button>
-        <div id="mesa0" class="mesa"></div>
-        <div id="mesa1" class="mesa"></div>
-        <div id="mesa2" class="mesa"></div>
-        <div id="mesa3" class="mesa"></div>
-    </section>
+            <section class="zona-juego zona-mesa">
+                <button id="btn-repartir" class="carta mazo"><strong><img src="assets\joker.png" alt="Joker"
+                            class="imagen-joker-mazo"></strong></button>
+                <div id="mesa0" class="mesa"></div>
+                <div id="mesa1" class="mesa"></div>
+                <div id="mesa2" class="mesa"></div>
+                <div id="mesa3" class="mesa"></div>
+            </section>
 
-    <section class="zona-juego">
-        <div class="mano-layout">
-            <div id="contenedor-cartas" class="mano"></div>
+            <section class="zona-juego">
+                <div class="mano-layout">
+                    <div id="contenedor-cartas" class="mano"></div>
+                </div>
+
+                <div class="pozo-layout">
+                    <div id="contenedor-pozo" class="pozo"></div>
+                </div>
+            </section>
+
+            <section class="zona-juego zona-mesa">
+                <div id="slot0" class="slot"></div>
+                <div id="slot1" class="slot"></div>
+                <div id="slot2" class="slot"></div>
+                <div id="slot3" class="slot"></div>
+            </section>
+
         </div>
-
-        <div class="pozo-layout">
-            <div id="contenedor-pozo" class="pozo"></div>
-        </div>
-    </section>
-
-    <section class="zona-juego zona-mesa">
-        <div id="slot0" class="slot"></div>
-        <div id="slot1" class="slot"></div>
-        <div id="slot2" class="slot"></div>
-        <div id="slot3" class="slot"></div>
-    </section>
-
-    </div>
     </main>
     <br>
     <footer>
@@ -107,7 +116,7 @@
         <span class="frase">
             Hecho con mate y malas decisiones
         </span>
-        
+
         <a href="https://github.com/AgussN1T" target="_blank">Un vistazo a mis otros proyectos</a>
         <img src="assets\joker.png" alt="Joker" class="imagen-joker">
         <!-- <p>AgussN1T</p> -->

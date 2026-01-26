@@ -283,12 +283,15 @@ const modalVictoria = document.getElementById('modal-victoria-fondo');
 const btnSalir = document.getElementById('btn-salir');
 
 function mostrarVictoria() {
+    clearInterval(intervalo);
+    const tiempoAlcanzado = document.getElementById("cronometro").innerText;
+    document.getElementById("tiempo-modal").innerText = tiempoAlcanzado;
     modalVictoria.classList.remove('oculto');
 }
 
-function ocultarVictoria() {
-    modalVictoria.classList.add('oculto');
-}
+// function ocultarVictoria() {
+//     modalVictoria.classList.add('oculto');
+// }
 
 // btnReiniciar.addEventListener('click', () => {
 //     ocultarVictoria();
@@ -359,10 +362,33 @@ function renderizarCarta(divCarta, carta) {
 
 }
 
+let segundos = 0;
+let intervalo;
+
+function iniciarCronometro() {
+    if (intervalo) clearInterval(intervalo);
+
+    intervalo = setInterval(() => {
+        segundos++;
+        
+        let m = Math.floor(segundos / 60);
+        let s = segundos % 60;
+
+        let tiempoTexto = 
+            (m < 10 ? "0" + m : m) + ":" + 
+            (s < 10 ? "0" + s : s);
+
+        document.getElementById("cronometro").innerText = tiempoTexto;
+    }, 1000);
+}
+
+
 document.body.classList.add('fondo-mesa');
 
 mostrarPozo();
 mostrarCartas();
+
+iniciarCronometro();
 
 
 
